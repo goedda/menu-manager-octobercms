@@ -50,22 +50,32 @@ If you don't have the 'Translate' plugin installed or don't want to translate th
 
 There are two components you can use frontend:
 
-1. Base
+**Base**
 
 Drag the component onto your page or layout, respectively. The default markup can be call by using 
+
 `{% component 'Base' %}`
-The base menu data is available as 
+
+The base menu data is available as
+
 `{{ Base.items }}`
+
 If you want to dump the data, the 'dump' method is not very suitable, so, you can also output the same data with a PHP 'print_r' dump by using
+
 `{{ Base.dumpItems }}`
+
 The default markup dumps the menu data both ways, so you get and idea of what I mean. ;)
 
-2. ReadyMenu
+**ReadyMenu**
 
 Drag the component onto your page or layout, respectively. The default markup can be call by using
+
 `{% component 'ReadyMenu' %}`
+
 The ready menu HTML output is available as 
+
 `{{ ReadyMenu.items | raw }}`
+
 
 The 'ReadyMenu' component injects additionally the following variables to the page/layout:
 
@@ -76,12 +86,16 @@ The 'ReadyMenu' component injects additionally the following variables to the pa
 
 If you use the plugin's default markup, the component will automatically load the proper view file and output a nice Bootstrap 3 or a normal, theme-based menu. You may want to use your own custom view file in order to customize some things.
 
-** Use of custom view file(s) **
+**Use of custom view file(s)**
 
 Instead of using
+
 `{% component 'ReadyMenu' %}`
+
 on your page or layout, respectively, use a partial like
+
 `{% partial 'MyCustomReadyMenu' %}`
+
 and create a partial 'MyCustomReadyMenu.htm' in the /partials folder of your theme.
 
 Please read also the specifications for [smartmenu](https://github.com/vadikom/smartmenus) menus.

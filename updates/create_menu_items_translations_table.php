@@ -12,9 +12,7 @@ class CreateMenuTranslatesTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id')->index();
-            $table->smallInteger('menu_id')->index();
             $table->string('translation')->index();
-            $table->char('language_code', 2)->index();
             $table->timestamps();
         });
     }

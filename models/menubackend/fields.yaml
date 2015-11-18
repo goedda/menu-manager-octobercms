@@ -1,0 +1,60 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: marcelparis.menu::lang.fields.id.label
+        disabled: true
+        span: right
+    title:
+        label: marcelparis.menu::lang.fields.title.label
+        type: text
+        span: left
+    description:
+        label: marcelparis.menu::lang.fields.desc.label
+        type: textarea
+        size: small
+    is_enabled:
+        label: marcelparis.menu::lang.fields.is_enabled.label
+        type: switch
+        default: 1
+    append_nodes_section:
+        label: marcelparis.menu::lang.fields.append_nodes_section.label
+        type: section
+        comment: marcelparis.menu::lang.fields.append_nodes_section.comment
+    pages:
+        label: marcelparis.menu::lang.fields.pages.label
+        placeholder: marcelparis.menu::lang.fields.pages.placeholder
+        type: dropdown
+        span: left
+    contents:
+        label: marcelparis.menu::lang.fields.contents.label
+        placeholder: marcelparis.menu::lang.fields.contents.placeholder
+        type: dropdown
+        span: right
+    has_url:
+        label: marcelparis.menu::lang.fields.has_url.label
+        comment: marcelparis.menu::lang.fields.has_url.comment
+        type: checkbox
+        span: right
+        cssClass: addFaIcon
+    content_url:
+        label: marcelparis.menu::lang.fields.content_url.label
+        type: text
+        span: right
+        trigger:
+            action: show
+            field: has_url
+            condition: checked
+    itemselector:
+        label: marcelparis.menu::lang.fields.itemselector.label
+        type: MarcelParis\Menu\FormWidgets\ItemSelector
+        span: left
+    contentselector:
+        label: marcelparis.menu::lang.fields.contentselector.label
+        type: MarcelParis\Menu\FormWidgets\ContentSelector
+        span: right
+    nestedsortable:
+        type: MarcelParis\Menu\FormWidgets\NestedSortable
+        span: full

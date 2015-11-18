@@ -1,0 +1,32 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Menu Translate
+
+# Model Form Field configuration
+form: $/marcelparis/menu/models/menutranslate/fields.yaml
+
+# Model Class name
+modelClass: MarcelParis\Menu\Models\MenuTranslate
+
+# Default redirect location
+defaultRedirect: marcelparis/menu/menutranslate
+
+# Create page
+create:
+    title: Create Menu Translate
+    redirect: marcelparis/menu/menutranslate/update/:id
+    redirectClose: marcelparis/menu/menutranslate
+
+# Update page
+update:
+    title: Edit Menu Translate
+    redirect: marcelparis/menu/menutranslate
+    redirectClose: marcelparis/menu/menutranslate
+    form: $/marcelparis/menu/models/menutranslate/fields_update.yaml
+
+# Preview page
+preview:
+    title: Preview Menu Translate

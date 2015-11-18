@@ -3,6 +3,7 @@
 use Model;
 use Cms\Classes\Theme;
 use Cms\Classes\Page;
+use Db;
 
 /**
  * MenuTranslate Model
@@ -36,9 +37,16 @@ class MenuTranslate extends Model
     */
     public function getPagesOptions($keyValue = null)
     {
-        $allPages = array();        
+        $allPages = [];
+        $existing = [];        
         $allPages = Page::getNameList();
-        return $allPages;
+        $translated = Db::select('select name from marcelparis_menu_items_translations');
+        foreach ($translated as $t) {
+            $existing[$t->name] = $t->name;
+        }
+        // Make sure the dropdown list does not contain pages that are already translated
+        $Pages = array_diff_key($allPages, $existing);
+        return $Pages;
     }
 
     /**

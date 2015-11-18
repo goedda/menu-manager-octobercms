@@ -1,0 +1,116 @@
+<?php namespace MarcelParis\Menu\FormWidgets;
+
+use Cms\Classes\Page;
+use Backend\Classes\FormWidgetBase;
+use MarcelParis\Menu\Models\MenuBackend;
+
+/**
+ * NestedSortable Form Widget
+ */
+class NestedSortable extends FormWidgetBase
+{
+
+    /**
+     * {@inheritDoc}
+     */
+    protected $defaultAlias = 'marcelparis_menu_nested_sortable';
+
+    public function widgetDetails()
+    {
+        return [
+            'name'        => trans('marcelparis.menu::lang.nested_sortable_selector.name'),
+            'description' => trans('marcelparis.menu::lang.nested_sortable_selector.desc')
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function render()
+    {
+        $this->prepareVars();
+        return $this->makePartial('nestedsortable');
+    }
+
+    /**
+     * Prepares the form widget view data
+     */
+    public function prepareVars()
+    {
+        $this->vars['name'] = $this->formField->getName();
+        $this->vars['value'] = $this->getLoadValue();
+        $this->vars['model'] = $this->model;
+        $this->vars['midata'] = $this->menuItemsData();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function loadAssets()
+    {
+    }
+
+    /**
+    * Function that prepares the nested sortable list
+    *
+    * @return array Returns the nested sortable list array or 'false', if there is no menu yet.
+    */
+    public function menuItemsData()
+    {
+        $id = $this->model->id;
+        if($id) {
+            $record = MenuBackend::find($id);
+            $midata = $this->createUnorderedList($record->items);
+            return $midata;
+        }
+        return false;
+    }
+
+    /**
+    * Helper function that transforms the nested sortable list into HTML 
+    */
+    public function createUnorderedList($items, $parent_id = '0', $skip = false)
+    {
+        $data_name = '';
+        if($skip) {
+            $ol = '<ol>';
+        // First ordered list is hard coded
+        } else {
+            $ol = '';
+        }
+        foreach($items as $item) {
+            if($item['parent_id'] == $parent_id) {
+                if($item['type'] == 'content_block') {
+                    $type_icon = ' <i class="fa fa-newspaper-o" title="' . trans('marcelparis.menu::lang.nested_sortable_selector.title_con_block') . '"></i>';
+                    $con_block_class = 'con_block';
+                } else {
+                    $type_icon = ' <i class="fa fa-leaf" title="' . trans('marcelparis.menu::lang.nested_sortable_selector.title_page') . '"></i>';
+                    $con_block_class = '';
+                }
+                $ol .= '<li id="' . $item['name'] . '_' . $item['id'] . '"><div class="menuDiv '. $con_block_class . '"><span title="' . trans('marcelparis.menu::lang.nested_sortable_selector.show_hide_children') . '" class="disclose ui-icon ui-icon-minusthick"></span>';
+                if($item['type'] == 'content_block') {
+                    $ol .= $item['name'] . $type_icon;
+                    $data_name = 'data-name="' . $item['name'] . '"';
+                } else {
+                    $ol .= $item['name'] . $type_icon;
+                }
+                $ol .= '<span title="' . trans('marcelparis.menu::lang.nested_sortable_selector.click_to_delete') . '" ' . $data_name . ' data-id="' . $item['name'] . '_' . $item['id'] . '" class="deleteMenu ui-icon ui-icon-closethick"></span></div>';
+                $ol .= $this->createUnorderedList($items, $item['id'], true);
+                $ol .= '</li>';
+            }
+        }
+        if($skip) { 
+            $ol .= '</ol>';
+        }
+        return $ol;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSaveValue($value)
+    {
+        return $value;
+    }
+
+}

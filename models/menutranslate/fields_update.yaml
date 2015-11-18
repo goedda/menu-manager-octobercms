@@ -1,0 +1,18 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: marcelparis.menu::lang.fields.id.label
+        disabled: true
+        span: left
+    name:
+        label: marcelparis.menu::lang.fields.name.label
+        span: left
+        type: text
+        disabled: true
+    translation:
+        label: marcelparis.menu::lang.fields.translation.label
+        type: text
+        span: right

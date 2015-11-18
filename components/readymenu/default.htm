@@ -1,0 +1,11 @@
+{# If there is menu data, this will direct to the proper partial #}
+
+{% if __SELF__.items %}
+    {% if __SELF__.bootstrapMenu == "bootstrap" %}
+        {% partial __SELF__ ~ '::b3menu' %}
+    {% else %}
+        {% partial __SELF__ ~ '::normalmenu' %}
+    {% endif %}
+{% else %}
+    <p>The menu with the ID = {{ __SELF__.menuID }} does not exist or does not have any menu items.</p>
+{% endif %}

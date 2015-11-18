@@ -1,0 +1,33 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Menu Backend
+
+# Model Form Field configuration
+form: $/marcelparis/menu/models/menubackend/fields.yaml
+
+# Model Class name
+modelClass: MarcelParis\Menu\Models\MenuBackend
+
+# Default redirect location
+defaultRedirect: marcelparis/menu/menubackend
+
+# Create page
+create:
+    title: Create Menu Backend
+    redirect: marcelparis/menu/menubackend/update/:id
+    redirectClose: marcelparis/menu/menubackend
+
+# Update page
+update:
+    title: Edit Menu Backend
+    redirect: marcelparis/menu/menubackend
+    redirectClose: marcelparis/menu/menubackend
+    flashSave: Menu updated successfully!
+    flashDelete: Menu has been deleted.
+
+# Preview page
+preview:
+    title: Preview Menu Backend

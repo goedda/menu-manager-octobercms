@@ -1,0 +1,15 @@
+<?php if ($this->previewMode): ?>
+
+    <div class="form-control">
+        <?= $value ?>
+    </div>
+
+<?php else: ?>
+
+    <ol class="sortable ui-sortable">
+	<?php echo $midata ?>
+	</ol>
+	
+	<input id="serializeOutput" name="MenuBackend[items]" value="" type="hidden"></input>
+
+<?php endif ?>

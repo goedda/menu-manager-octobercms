@@ -1,0 +1,5 @@
+1.0.1: First version of menu plugin.
+1.0.2:
+    - Create menu settings and menu backend tables
+    - create_menu_backend_table.php
+    - create_menu_items_translations_table.php

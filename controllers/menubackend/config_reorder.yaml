@@ -1,0 +1,17 @@
+# ===================================
+#  Reorder Behavior Config
+# ===================================
+
+# Reorder Title
+title: Reorder Categories
+
+# Attribute name
+nameFrom: title
+
+# Model Class name
+modelClass: MarcelParis\Menu\Models\MenuBackend
+
+# Toolbar widget configuration
+toolbar:
+    # Partial for toolbar buttons
+    

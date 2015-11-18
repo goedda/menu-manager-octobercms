@@ -1,0 +1,11 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: marcelparis.menu::lang.fields.id.label
+        searchable: true
+    name:
+        label: marcelparis.menu::lang.fields.name.label
+        searchable: true

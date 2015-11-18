@@ -99,3 +99,37 @@ on your page or layout, respectively, call
 
 and create a partial 'MyCustomReadyMenu.htm' in the /partials folder of your active theme.  
 Please read also the specifications for [smartmenu](https://github.com/vadikom/smartmenus) menus, if you intend to customize the menu view files.
+
+####Example
+
+This example is the code from a layout. By adding the component to a layout, all pages using that layout will automatically show the menu.  
+The example shows a Bootstrap 3 menu with a 'navbar-fixed-top' alignement.
+
+    description = "My layout"
+    
+    [ReadyMenu]
+    menuID = "1"
+    home = "Home"
+    bootstrapMenu = "bootstrap"
+    navbar = "navbar-fixed-top"
+    ==
+    <!DOCTYPE html>
+    
+    <html>
+        {% partial "head" %}
+        <body>
+
+        <header>
+            {% component 'ReadyMenu' %}
+        </header>
+        <section>
+            {% page %}
+        </section>
+
+        </body>
+    </html>
+
+###Acknowledgement
+
+The devs of Laravel and OctoberCMS.  
+The people from the #October chat room willing to help an extra-professional coder, namely jwilson8767, Tschallacka, dshoreman and others...
